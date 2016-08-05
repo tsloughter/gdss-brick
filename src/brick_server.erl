@@ -1666,7 +1666,7 @@ handle_call_do_prescreen(Msg, From, State) ->
                 false ->
                     put(handle_call_do_prescreen, NNN+1),
                     spawn(fun() ->
-                              timer:sleep(200 + random:uniform(200)),
+                              timer:sleep(200 + rand:uniform(200)),
                               State#state.name ! {'$gen_call', From, Msg}
                           end),
                     {noreply, State}
@@ -4635,7 +4635,7 @@ do_kick_next_sweep(_Stage, S) ->
             ReKey = Sw#sweep_r.done_sweep_key,
             ?E_INFO("do_kick_next_sweep: brick ~p, stage name "
                      "= ~p, update timeout error, resending key ~p (~p)",
-                     [S#state.name, StageName, ReKey, begin {ImplMod, ImplState} = impl_details(S), element(1, ImplMod:bcb_get_many(ReKey, [witness, {max_num, 1}], ImplState)) end]),
+                     [S#state.name, StageName, ReKey, witness(S, ReKey)]),
             Sw2 = Sw#sweep_r{stage = top,
                              val_prime_lastkey = undefined,
                              done_sweep_key = ReKey,
@@ -4656,6 +4656,10 @@ do_kick_next_sweep(_Stage, S) ->
         _ ->
             S
     end.
+
+witness(S, ReKey) ->
+    {ImplMod, ImplState} = impl_details(S),
+    element(1, ImplMod:bcb_get_many(ReKey, [witness, {max_num, 1}], ImplState)).
 
 do_kick_next_sweep_keyts_list_empty(S) ->
     %% Avoid race condition by using mutual recursion.

@@ -39,7 +39,7 @@
 -behaviour(gen_server).
 
 -include("brick_public.hrl").
--include("gmt_elog.hrl").
+-include_lib("gmt_util/include/gmt_elog.hrl").
 
 %% API
 -export([start/0, start_link/0,

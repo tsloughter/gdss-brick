@@ -68,7 +68,7 @@
 %% gmt_elog stuff
 %%
 
--include("gmt_elog.hrl").
+-include_lib("gmt_util/include/gmt_elog.hrl").
 
 %% Any component
 -define(CAT_GENERAL,              (1 bsl  0)). % General: init, terminate, ...

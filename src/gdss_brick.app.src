@@ -26,19 +26,9 @@
   {description, "Hibari Brick Server"},
   {vsn, "0.1.11"},
   {registered, []},
-  {applications, [kernel, stdlib, sasl, crypto]},
+  {applications, [kernel, stdlib, sasl, crypto, gmt_utils]},
   {mod, {brick, []}},
-  {modules, [brick, brick_sup
-             , brick_pingee, brick_cinfo
-             , brick_brick_sup, brick_data_sup
-             , brick_mboxmon
-             , brick_hash, brick_mon_sup
-             , brick_server, brick_shepherd
-             , brick_ets
-             , brick_itimer
-             , brick_ticket
-             , gmt_hlog, gmt_hlog_local, gmt_hlog_common
-            ]},
+  {modules, []},
   {env, [{brick_check_checkpoint_max_mb, 5}
          , {brick_check_checkpoint_throttle_bytes, 1000000}
          , {brick_default_data_dir, "."}

@@ -24,7 +24,7 @@
 
 -behaviour(application).
 
--include("gmt_elog.hrl").
+-include_lib("gmt_util/include/gmt_elog.hrl").
 
 %% application callbacks
 -export([start/0, start/2, stop/1]).

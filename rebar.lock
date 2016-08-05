@@ -1,0 +1,6 @@
+[{<<"gmt_util">>,
+  {git,"https://github.com/tsloughter/gmt-util",
+       {ref,"a8edf10d898384d7208b2d41c5bdccd219c155aa"}},
+  0},
+ {<<"goldrush">>,{pkg,<<"goldrush">>,<<"0.1.8">>},1},
+ {<<"lager">>,{pkg,<<"lager">>,<<"3.2.1">>},0}].
